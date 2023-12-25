@@ -1,18 +1,13 @@
-from traceback import print_exc
-
-
-def maxProfit(prices):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        curr_profit=0
         profit=0
-        sub=0
-        x=min(prices)
-        print(x)
-       
-        y=max(prices)
-        print(y)
-        if prices.index(y, 0, len(prices))> prices.index(x, 0, len(prices)):
-            profit=y-x
-
+        min_price=prices[0]
+        for i  in range(1,len(prices)) :
+            if prices[i]<min_price:
+                min_price=prices[i]
+            else:
+                curr_profit=prices[i]-min_price
+                profit=max(profit,curr_profit)
         return profit
-ls=[7,1,5,3,6,4]
-
-print(maxProfit(ls))
+s = Solution()
